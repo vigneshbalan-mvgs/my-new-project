@@ -1,10 +1,12 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import HomeScreen from "../Home/HomeScreen";
-import Search from "../Search/Search.js";
-import Trends from "../Trends/Trends.js";
-import Profile from "../Profile/Profile.js";
+import HomeScreen from "./Home/HomeScreen.js";
+import Search from "./Search/Search.js";
+import Trends from "./Trends/Trends.js";
+import Profile from "./Profile/Profile.js";
+import Create from "./Create/Create.js";
+import TeamBuild from "./TeamBuild/TeamBuild.js";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,14 +21,17 @@ const Main = () => {
             case "Home":
               iconName = "home";
               break;
-            case "Search":
-              iconName = "search";
-              break;
             case "Trends":
               iconName = "trending-up";
               break;
             case "Profile":
               iconName = "person";
+              break;
+            case "Create":
+              iconName = "add-circle";
+              break;
+            case "TeamBuild":
+              iconName = "group";
               break;
           }
 
@@ -41,15 +46,20 @@ const Main = () => {
         component={HomeScreen}
         options={{ headerShown: false }}
       />
-
       <Tab.Screen
-        name="Search"
-        component={Search}
+        name="Create"
+        component={Create}
         options={{ headerShown: false }}
       />
+
       <Tab.Screen
         name="Trends"
         component={Trends}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="TeamBuild"
+        component={TeamBuild}
         options={{ headerShown: false }}
       />
       <Tab.Screen

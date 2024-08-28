@@ -7,13 +7,13 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
+import { useTransitionProgress } from "react-native-screens";
 
 export default function LoginPage({ navigation }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [userNumber, setUserNumber] = useState("");
 
   const handleLogin = () => {
-    if (username.trim() === "" || password.trim() === "") {
+    if (userNumber.trim() === "") {
       Alert.alert("Details Needed", "Please fill in all fields.");
     } else {
       navigation.navigate("Main");
@@ -25,21 +25,13 @@ export default function LoginPage({ navigation }) {
       <Text style={styles.logo}>Log In</Text>
       <TextInput
         style={styles.input}
-        placeholder="Username"
+        placeholder="Mobile Number"
         placeholderTextColor="#aaa"
-        value={username}
-        onChangeText={setUsername}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        placeholderTextColor="#aaa"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
+        value={userNumber}
+        onChangeText={setUserNumber}
       />
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Log In</Text>
+        <Text style={styles.buttonText}>Get OTP</Text>
       </TouchableOpacity>
     </View>
   );
@@ -68,12 +60,12 @@ const styles = StyleSheet.create({
   button: {
     width: "80%",
     padding: 15,
-    backgroundColor: "#0095f6",
+    backgroundColor: "orange",
     borderRadius: 10,
     alignItems: "center",
   },
   buttonText: {
-    color: "#fff",
+    color: "black",
     fontSize: 18,
     fontWeight: "bold",
   },
