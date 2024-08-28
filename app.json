@@ -12,16 +12,36 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mycompany.mynewproject",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to allow you to take photos.",
+        "NSLocationWhenInUseUsageDescription": "This app requires your location to show relevant information."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mycompany.mynewproject",
+      "versionCode": 1,
+      "permissions": ["CAMERA", "ACCESS_FINE_LOCATION"]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "config": {
+        "firebase": {
+          "apiKey": "YOUR_FIREBASE_API_KEY",
+          "authDomain": "YOUR_PROJECT_ID.firebaseapp.com",
+          "projectId": "YOUR_PROJECT_ID",
+          "storageBucket": "YOUR_PROJECT_ID.appspot.com",
+          "messagingSenderId": "YOUR_MESSAGING_SENDER_ID",
+          "appId": "YOUR_APP_ID",
+          "measurementId": "YOUR_MEASUREMENT_ID"
+        }
+      }
     }
   }
 }
