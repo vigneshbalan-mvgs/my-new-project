@@ -1,10 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import HomeScreen from "./Components/HomeScreen";
-import Search from "./Components/Search";
-import Trends from "./Components/Trends";
-import Profile from "./Components/Profile";
+import HomeScreen from "../Home/HomeScreen";
+import Search from "../Search/Search.js";
+import Trends from "../Trends/Trends.js";
+import Profile from "../Profile/Profile.js";
 
 const Tab = createBottomTabNavigator();
 
@@ -36,10 +36,27 @@ const Main = () => {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Search" component={Search} />
-      <Tab.Screen name="Trends" component={Trends} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Trends"
+        component={Trends}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{ headerShown: false }}
+      />
     </Tab.Navigator>
   );
 };

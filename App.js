@@ -1,14 +1,14 @@
-import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import LoginPage from "./LoginPage.js";
-import Main from "./Main.js";
+import React from "react";
+import Main from "./Components/Screens/Main.js";
+import LoginPage from "./Components/Login/LoginPage.js";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer screenOptions={{ headerShown: false }}>
+    <NavigationContainer options={{ headerShown: false }}>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
