@@ -1,31 +1,41 @@
-React Native Mobile App Documentation
-Overview
+# React Native Mobile App Documentation
+
+# Overview
 
 This documentation outlines the requirements and steps for setting up the development environment for your React Native mobile app. It includes system requirements, dependencies, and instructions for configuring Android and iOS emulators.
 Prerequisites
 
-1. Operating System
+## 1. Operating System
 
-   Windows 10/11: For Android development.
-   MacOS: For both Android and iOS development.
-   Linux: For Android development.
+Windows 10/11: For Android development.
+MacOS: For both Android and iOS development.
+Linux: For Android development.
 
-2. Node.js
+## 2. Node.js
 
-Ensure that you have Node.js installed on your system. You can download it from Node.js official website. 3. React Native CLI
+Ensure that you have Node.js installed on your system. You can download it from Node.js official website.
+
+## 3. React Native CLI
 
 Install the React Native CLI globally:
 
 ```bash
-npm install -g react-native-cli
+npm install -g expo-cli
 
 ```
 
-4. Java Development Kit (JDK)
+or
 
-   JDK 11 or above is required for Android development. You can download it from Oracle's website.
+```bash
+yarn global add expo-cli
 
-5. Android Studio
+```
+
+## 4. Java Development Kit (JDK)
+
+JDK 11 or above is required for Android development. You can download it from Oracle's website.
+
+## 5. Android Studio
 
 For Android development, you need Android Studio installed. It includes the Android SDK, emulators, and build tools.
 
@@ -37,7 +47,7 @@ After installation:
     Go to SDK Manager and install the necessary SDK versions and system images.
     Set up an Android Virtual Device (AVD) for emulation.
 
-6. Xcode (macOS Only)
+## 6. Xcode (macOS Only)
 
 For iOS development, you need Xcode installed. Xcode includes the iOS SDK and iOS simulator.
 
@@ -71,8 +81,8 @@ Development Setup
 First, clone the project repository:
 
 ```bash
-git clone https://github.com/username/repository.git
-cd repository
+git clone https://github.com/vigneshbalan-mvgs/my-new-project.git
+cd my-new-project
 
 ```
 
@@ -101,14 +111,14 @@ npm install
 For Android:
 
 ```bash
-npx react-native run-android
+npx expo start
 
 ```
 
 For iOS (macOS only):
 
 ```bash
-npx react-native run-ios
+npx expo start
 
 ```
 
