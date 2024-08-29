@@ -1,14 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Search from "../Search/Search";
-import Scroll from "../Home/Scroll";
+import PostingPage from "./Post";
 
 export default function HomeScreen() {
   return (
     <View style={styles.container} options={{ headerShown: false }}>
       <Search />
-      <Text style={styles.text}>Home Screen</Text>
-      <Scroll />
     </View>
   );
 }

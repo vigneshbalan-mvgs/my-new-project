@@ -2,11 +2,11 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import HomeScreen from "./Home/HomeScreen.js";
-import Search from "./Search/Search.js";
 import Trends from "./Trends/Trends.js";
 import Profile from "./Profile/Profile.js";
 import Create from "./Create/Create.js";
 import TeamBuild from "./TeamBuild/TeamBuild.js";
+import Chat from "./Chat/Chat.js";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +33,9 @@ const Main = () => {
             case "TeamBuild":
               iconName = "group";
               break;
+            case "Chat":
+              iconName = "chat";
+              break;
           }
 
           return <MaterialIcons name={iconName} size={size} color={color} />;
@@ -57,6 +60,13 @@ const Main = () => {
         component={Trends}
         options={{ headerShown: false }}
       />
+
+      <Tab.Screen
+        name="Chat"
+        component={Chat}
+        options={{ headerShown: false }}
+      />
+
       <Tab.Screen
         name="TeamBuild"
         component={TeamBuild}

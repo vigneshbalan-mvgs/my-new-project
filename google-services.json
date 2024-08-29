@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "165241563593",
+    "project_id": "sportspersonauth",
+    "storage_bucket": "sportspersonauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165241563593:android:72d21eb6e22408e293e018",
+        "android_client_info": {
+          "package_name": "com.mycompany.mynewproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQGzBCN3a63_Wj7URifDXmfk8HfXak74Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

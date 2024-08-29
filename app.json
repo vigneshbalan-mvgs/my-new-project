@@ -2,6 +2,7 @@
   "expo": {
     "name": "my-new-project",
     "slug": "my-new-project",
+    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,6 +22,7 @@
       }
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -42,6 +44,17 @@
           "measurementId": "YOUR_MEASUREMENT_ID"
         }
       }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9a5577e6-2a95-485e-bf9b-61c4be9d2fe0"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/9a5577e6-2a95-485e-bf9b-61c4be9d2fe0"
     }
   }
 }

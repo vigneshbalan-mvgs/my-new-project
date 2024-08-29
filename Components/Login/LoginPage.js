@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
-import { useTransitionProgress } from "react-native-screens";
 
 export default function LoginPage({ navigation }) {
   const [userNumber, setUserNumber] = useState("");
@@ -16,17 +15,18 @@ export default function LoginPage({ navigation }) {
     if (userNumber.trim() === "") {
       Alert.alert("Details Needed", "Please fill in all fields.");
     } else {
-      navigation.navigate("Main");
+      navigation.navigate("OTP");
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.logo}>Log In</Text>
+      <Text style={styles.logo}>SportsPerson</Text>
       <TextInput
         style={styles.input}
         placeholder="Mobile Number"
         placeholderTextColor="#aaa"
+        keyboardType="number-pad"
         value={userNumber}
         onChangeText={setUserNumber}
       />
