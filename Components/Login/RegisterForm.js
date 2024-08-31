@@ -9,19 +9,41 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
+import firestore from "@react-native-firebase/firestore";
+import auth from "@react-native-firebase/auth";
 
 import { Picker } from "@react-native-picker/picker";
 import * as ImagePicker from "expo-image-picker";
 
 const RegisterForm = ({ navigation }) => {
+  const { uid } = route.params;
   const [photo, setPhoto] = useState(null);
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [dob, setDob] = useState("");
-
   const [selectedGender, setSelectedGender] = useState("");
   const [selectedSport, setSelectedSport] = useState("");
+
+  const saveProfile = async () => {
+    try {
+      await firestore().collection("users").doc(uid).set({
+        username,
+        firstName,
+        lastName,
+        dob,
+        gender: selectedGender,
+        sport: selectedSport,
+        photo,
+        dob,
+        gender,
+      });
+      //after saving details, navigate to main page
+      navigation.navigate("Main");
+    } catch (error) {
+      console.log("Error saving profile", error);
+    }
+  };
 
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -84,7 +106,7 @@ const RegisterForm = ({ navigation }) => {
         />
       </View>
 
-      {/* GenderSection */}
+      {/* Gender Section */}
       <Text style={styles.label}>Select Gender:</Text>
       <Picker
         selectedValue={selectedGender}
@@ -96,7 +118,7 @@ const RegisterForm = ({ navigation }) => {
         <Picker.Item label="Female" value="female" />
         <Picker.Item label="Other" value="other" />
       </Picker>
-      {/* SportsSection */}
+      {/* Sports Section */}
       <Text style={styles.label}>Select Sport:</Text>
       <Picker
         selectedValue={selectedSport}
@@ -109,7 +131,7 @@ const RegisterForm = ({ navigation }) => {
         <Picker.Item label="Tennis" value="tennis" />
         <Picker.Item label="Cricket" value="cricket" />
       </Picker>
-
+      {/* Date of Birth */}
       <TextInput
         style={styles.input}
         placeholder="Date of Birth (YYYY-MM-DD)"
@@ -117,6 +139,7 @@ const RegisterForm = ({ navigation }) => {
         keyboardType="number-pad"
         onChangeText={setDob}
       />
+      {/* Button */}
       <TouchableOpacity style={styles.button} onPress={handleSave}>
         <Text style={styles.buttonText}>Save</Text>
       </TouchableOpacity>

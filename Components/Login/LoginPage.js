@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   View,
   Text,
@@ -7,30 +7,51 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
+import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
+import firebase from "firebase/compat/app";
+import { auth } from "../../firebaseConfig";
+import { useNavigation } from "@react-navigation/native";
 
-export default function LoginPage({ navigation }) {
-  const [userNumber, setUserNumber] = useState("");
+export default function LoginPage() {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const recaptchaVerifier = useRef(null);
+  const navigation = useNavigation();
 
-  const handleLogin = () => {
-    if (userNumber.trim() === "") {
-      Alert.alert("Details Needed", "Please fill in all fields.");
+  const senVerification = async () => {
+    if (phoneNumber !== "string" || phoneNumber.trim() === "") {
+      try {
+        const phoneProvider = new firebase.auth.PhoneAuthProvider(auth);
+        const verificationId = await phoneProvider.verifyPhoneNumber(
+          phoneNumber,
+          recaptchaVerifier.current,
+        );
+        Alert.alert("OTP sent successfully");
+        navigation.navigate("OTP", { verificationId, phoneNumber });
+      } catch (error) {
+        Alert.alert(error.message);
+      }
     } else {
-      navigation.navigate("OTP");
+      Alert.alert("Please enter a valid phone number");
     }
   };
 
   return (
     <View style={styles.container}>
+      <FirebaseRecaptchaVerifierModal
+        ref={recaptchaVerifier}
+        firebaseConfig={auth.app.options}
+      />
       <Text style={styles.logo}>SportsPerson</Text>
       <TextInput
         style={styles.input}
         placeholder="Mobile Number"
         placeholderTextColor="#aaa"
         keyboardType="number-pad"
-        value={userNumber}
-        onChangeText={setUserNumber}
+        autoCompleteType="tel"
+        value={phoneNumber}
+        onChangeText={setPhoneNumber}
       />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+      <TouchableOpacity style={styles.button} onPress={senVerification}>
         <Text style={styles.buttonText}>Get OTP</Text>
       </TouchableOpacity>
     </View>

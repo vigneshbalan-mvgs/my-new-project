@@ -9,14 +9,22 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import { PhoneAuthProvider, signInWithCredential } from "firebase/auth";
+import auth from "../../firebaseConfig.js";
+import firestore from "@react-native-firebase/firestore";
+
 const OTPScreen = ({ navigation }) => {
+  const { verificationId } = route.params;
   const [otp, setOtp] = useState("");
 
-  const handleVerifyOtp = () => {
-    if (otp.trim() === "") {
-      Alert.alert("Error", "Please enter the OTP.");
-    } else {
+  const confirmCode = async () => {
+    try {
+      const credential = PhoneAuthProvider.credential(verificationId, otp);
+      await signInWithCredential(auth, credential);
+      Alert.alert("OTP verified successfully");
       navigation.navigate("Register");
+    } catch (error) {
+      Alert.alert("Error Verifying Code", error.message);
     }
   };
 
@@ -25,7 +33,7 @@ const OTPScreen = ({ navigation }) => {
       <Text style={styles.title}>Enter OTP</Text>
       <TextInput
         value={otp}
-        onChangeText={setOtp}
+        onChangeText={confirmCode}
         placeholder="Enter OTP"
         keyboardType="number-pad"
         style={styles.input}

@@ -2,8 +2,22 @@
   "expo": {
     "name": "my-new-project",
     "slug": "my-new-project",
-    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/firestore",
+      "@react-native-firebase/crashlytics",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
+    ],
     "version": "1.0.0",
+    "scheme": "my-new-project",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
